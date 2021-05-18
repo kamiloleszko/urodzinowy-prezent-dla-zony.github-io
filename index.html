@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Quiz</title>
+	<style>
+		#frame{max-width:620px;width:100%;border:1px solid #ccc;background:#eee;padding:10px;} 
+		#content{font:normal normal 1em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif;margin:0 40px 10px;} 
+		h2{font:italic bold 1.3em/1.2em "Helvetica Neue", Helvetica, Arial, sans-serif;padding:5px 15px 15px;} 
+		input[type=radio]{margin:0 10px 5px -22px;} label{margin:0 0 5px;}
+		#score p{font-size:0.95em; font-style:italic; color:#666; float:right;margin:5px 5px 0 0;}
+		#score:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+		#response{min-height:70px; margin:10px; }
+		#response h3{font:normal bold 1.2em/1.5em "Helvetica Neue", Helvetica, Arial, sans-serif; margin:5px 0;}
+	</style>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="style.css">
+
+	
+</head>
+<body>
+
+    <div class="container">
+        <section id="cover" class="min-vh-100">
+            <div id="cover-caption">
+                <div class="container">
+                    <div class="row text-white">
+                        <div class="col-md-8 col-sm-10 mx-auto text-center form p-4">
+                            <h1 class="main-h1">Jak się nazywasz?</h1>
+                            <h1 class="main-h1">Uzupełnij aby dostać nagrodę :)</h1>
+                            <div class="px-2">
+                                <div action="" class="justify-content-center">
+                                    <div class="form-group">
+                                        <label class="sr-only">Imię</label>
+                                        <input id="name" type="text" class="form-control" placeholder="Imię...">
+                                        <span id="name-valid"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">Nazwisko</label>
+                                        <input id="surname" type="text" class="form-control" placeholder="Nazwisko...">
+                                        <span id="surname-valid"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">Mówią na mnie</label>
+                                        <input id="nickName" type="text" class="form-control" placeholder="Mówią na mnie...">
+                                        <span id="nickName-valid"></span>
+                                    </div>
+                                    <div></br></div>
+                                    <button onclick="confirmFunction()" class="btn btn-primary btn-lg">Potwierdź</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">GRATULACJE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="frame">
+                        <h1 class="header-quiz">Quizz urodzinowy. <br>Rozwiąż a dostaniesz prezent</h1>
+                        <div id="score"><p>wynik: 0 prawidłowych odpowiedzi na 0 możliwych</p></div>
+                        <h2 id="question">Pytanie</h2>
+                        <div id="content">
+                        </div>
+                        <button id="check" onclick="checkAnswer()">Zatwierdź odpowiedź</button>
+                        <button id="show-prize-button" type="button" class="btn btn-primary" onclick="showPrize()">Pokaż nagrodę</button>
+                        <button id="play-again-button" type="button" class="btn btn-primary" onclick="playAgain()">Zagraj ponownie</button>
+                        <div id="response">
+                            <div id="explanation"></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="closeModal()" data-dismiss="modal">Zamknij</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+          <div class="modal fade" id="prize-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" id="modal-content-prize">
+                <div class="modal-content" id="modal-content-prize">
+                  <div class="modal-header" id="modal-content-prize">
+                    <h5 class="modal-title" id="prize-modal-header">&#10084; WSKAZÓWKA DO PREZENTU :) &#10084;</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" id="modal-content-prize">
+                    <img src="image_1.jpg"/>
+                    <img src="image_2.jpg"/>
+                    <img src="image_3.jpg"/>
+                  </div>
+                  <div class="modal-footer" id="modal-content-prize">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Zamknij</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
