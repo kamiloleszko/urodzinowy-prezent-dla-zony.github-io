@@ -48,6 +48,7 @@ form:before {
 
 body {
     background-color: silver;
+    height: 100vh;
 }
 
 #cover {
