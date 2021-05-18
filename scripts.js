@@ -93,7 +93,7 @@ var quiz = [
                                 "RELATYWNIE"
                             ],
         "correct"		: 	"RELATYWNIE",
-        "explanation"	: 	"A kto |czasami| przedrzeźniał męża który sie bardzo stara??",
+        "explanation"	: 	"A kto niejednokrotnie dziamkał mężowi który sie bardzo stara??",
     },
     {
         "question"		: 	"Q3: Kto jest ideałem mężczyzny",
