@@ -88,7 +88,7 @@ form:before {
     font-weight: bold;  
     opacity: 0.8;
     width: 100%;
-    font-family: cursive
+/*     font-family: cursive */
 }
 
 .invalid{
