@@ -104,3 +104,8 @@ img {
 #prize-modal-header{
     text-align: center;
 }
+
+#bttn-prize {
+    position: relative;
+    right: 50%;
+}
