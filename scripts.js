@@ -36,7 +36,7 @@ function validateSurname(){
 function validateNickName() {
     var nickName = document.getElementById("nickName").value;
     if  (nickName.toLowerCase() !== "szpachla"){
-        $('#nickName-valid').text("Źle, tak na Ciebie wcale nie mówią :)");
+        $('#nickName-valid').text("Źle, a właśnie, że tak na Ciebie nie mówią :)");
         document.getElementById('nickName').setAttribute("class","invalid form-control"); 
     } else{
         $('#nickName-valid').text("");
